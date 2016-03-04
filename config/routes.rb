@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get  'recipes/view'
+  resources :recipes, only: [:index, :show]
   root 'recipes#index'
   
   # The priority is based upon order of creation: first created -> highest priority.

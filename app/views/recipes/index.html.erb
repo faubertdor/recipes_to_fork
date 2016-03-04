@@ -1,2 +1,30 @@
-<h1>Recipes#index</h1>
-<p>Find me in app/views/recipes/index.html.erb</p>
+<h1>Recipes for: <%= @search_term %></h1>
+<div class="row jumbotron">
+  <%= form_tag(root_path, method: "get", class: "form-inline") do %>
+    <%= label_tag(:search, "Search for Recipes:", class: "form-group") %>
+    <%= text_field_tag(:search) %>
+    <%= submit_tag("Search", class: "form-group") %>
+  <% end %>
+</div>
+
+
+<div class="row">
+  <% @recipes_found.each do |recipe| %>
+  <div class= "row">
+    <div class="col-xs-1">
+      <%= link_to image_tag(recipe["image_url"], size: "100x100"),
+                            recipe_path(recipe['recipe_id']) %>
+    </div>
+    <div class="col-xs-4">
+      <p>
+        <%= link_to sanitize(recipe["title"]), recipe_path(recipe['recipe_id']) %>
+        <br/>
+        Publisher: <%= link_to sanitize(recipe["publisher"]), recipe["publisher_url"] %>
+        <br/>
+        Social rank: <%= recipe["social_rank"] %>
+      </p>
+    </div>
+  </div>
+  <br/>
+  <% end %>
+</div>

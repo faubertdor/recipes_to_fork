@@ -1,9 +1,10 @@
 class RecipesController < ApplicationController
   def index
     @search_term =  params[:search] || 'organic'
-    @search_results = Recipe.for(@search_term)
+    @recipes_found = Recipe.for(@search_term)
   end
 
-  def view
+  def show
+    @recipe = Recipe.show(params[:id])
   end
 end

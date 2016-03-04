@@ -1,0 +1,18 @@
+<div class="row">
+  <h2>Recipe to make: <%= @recipe['title'] %> from <%= @recipe["publisher"] %></h2>
+</div>
+
+<div class="row">
+  <div class="col-xs-3">
+    <%= image_tag(@recipe['image_url'], size: '300x300') %>
+  </div>
+  <div class="col-xs-6">
+    <p>
+      <% @recipe['ingredients'].each do |element| %>
+        <ul>
+          <li><%= element %></li>
+        </ul>
+      <% end %>
+    </p>
+  </div>
+</div>

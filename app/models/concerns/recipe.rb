@@ -11,7 +11,7 @@ class Recipe
     get("/search", query: { q: term })["recipes"]
   end
   
-  def self.view(id)
+  def self.show(id)
     get("/get", query: { rId: id})["recipe"]
   end
 end
